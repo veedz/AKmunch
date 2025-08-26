@@ -42,6 +42,9 @@ esac
 
 # Automatic miui detection
 region="$(file_getprop /vendor/build.prop "ro.vendor.miui.build.region")"
+if [ -z "$region" ]; then
+  region="$(file_getprop /product/etc/build.prop "ro.miui.build.region")"
+fi
 case "$region" in
   cn|in|ru|id|eu|tr|tw|gb|global|mx|jp|kr|lm|cl|mi)
       v=miui
